@@ -16,9 +16,12 @@ let appData = {
     savings: false,
 }
  let answer1 = prompt('Введите обязательную статью расходов в этом месяце', 'Почилить'),
-     answer2 = prompt('Во сколько обойдется?', '100');
+     answer2 = prompt('Во сколько обойдется?', '100'),
+     answer3 = prompt('Введите обязательную статью расходов в этом месяце', 'НадоДенди'),
+     answer4 = prompt('Во сколько обойдется?', '1000');
 
     appData.expenses[answer1] = answer2;
+    appData.expenses[answer3] = answer4;
 
 alert(appData.budget / 30);
 
