@@ -22,8 +22,9 @@ let appData = {
 
     appData.expenses[answer1] = answer2;
     appData.expenses[answer3] = answer4;
+    console.log( appData.expenses);
 
-alert(appData.budget / 30);
+ alert(appData.budget / 30);
 
 /*
 1. Вопрос: Сколько типов данных существует в JS?
