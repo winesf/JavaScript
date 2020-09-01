@@ -2,7 +2,7 @@
 
 // alert('hello');
 
-var money = prompt('Ваш бюджет на месяц?' , '0'),
+var money = +prompt('Ваш бюджет на месяц?' , '1000'),
     time = prompt('Введите дату в формате YYYY-MM-DD' , '2000-21-21');
 
 
@@ -12,35 +12,70 @@ let appData = {
     timeData: time,
     expenses: {},
     optionalExpenses: {},
-    incoome: [],
+    income: [],
     savings: false,
 }
- let answer1 = prompt('Введите обязательную статью расходов в этом месяце', 'Почилить'),
-     answer2 = prompt('Во сколько обойдется?', '100'),
-     answer3 = prompt('Введите обязательную статью расходов в этом месяце', 'НадоДенди'),
-     answer4 = prompt('Во сколько обойдется?', '1000');
 
-    appData.expenses[answer1] = answer2;
-    appData.expenses[answer3] = answer4;
+    for(let i=0; i < 2; i++) {
+    let a = prompt('Введите обязательную статью расходов в этом месяце', 'Почилить'),
+        b = prompt('Во сколько обойдется?', '100');
 
-alert(appData.budget / 30);
+    if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+    && a != "" && b != "" && a.length < 50) {
+        console.log("done");
+        appData.expenses[a] = b;
+    } else {
+        console.log("cancel");
+        i--;
+    }
+};
 
-/*
-1. Вопрос: Сколько типов данных существует в JS?
-Всего 8 типов данных
-    number для любых чисел
-    bigint для целых чисел произвольной длины
-    string для строк
-    boolean для true/false.
-    null для неизвестных значений
-    undefined для неприсвоенных значений
-    object для более сложных структур данных.
-    symbol для уникальных идентификаторов.
+// ====================================================================================================================
+//     let i = 0;
+//     do {
+//
+//         let a = prompt('Введите обязательную статью расходов в этом месяце', 'Почилить'),
+//             b = prompt('Во сколько обойдется?', '100');
+//         if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+//             && a != "" && b != "" && a.length < 50) {
+//             console.log("done");
+//             appData.expenses[a] = b;
+//         } else {
+//             console.log("cancel");
+//             i--;
+//         }
+//         i++;
+//     }
+//     while (i < 2);
+// ====================================================================================================================
+// let i = 0;
+// while (i < 2) {
+//     let a = prompt('Введите обязательную статью расходов в этом месяце', 'Почилить'),
+//         b = prompt('Во сколько обойдется?', '100');
+//     if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+//         && a != "" && b != "" && a.length < 50) {
+//         console.log("done");
+//         appData.expenses[a] = b;
+//     } else {
+//         console.log("cancel");
+//         i--;
+//     }
+//     i++;
+// }
+// ====================================================================================================================
+    appData.moneyPerDay = appData.budget / 30;
 
-2.  Как вывести информацию в консоль?
-В консоль можно вывести информацию с помощью функций:
- console.log();
+alert("Ежедневный бюджет: " + appData.moneyPerDay);
 
-3. Какая функция операторов || и &&?
-   Эти операторы нужны для сравнения "ИЛИ" и "И"
-*/
+if(appData.moneyPerDay < 100) {
+    console.log("Минимальный уровень достатка");
+} else if(appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+    console.log("Средний уровень достатка");
+} else if(appData.moneyPerDay > 2000) {
+    console.log("Высокий уровень достатка");
+} else {
+    console.log("Ошибка")
+}
+console.log(appData);
+
+
