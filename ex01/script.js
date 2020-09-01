@@ -12,7 +12,7 @@ let appData = {
     timeData: time,
     expenses: {},
     optionalExpenses: {},
-    income: [],
+    incoome: [],
     savings: false,
 }
  let answer1 = prompt('Введите обязательную статью расходов в этом месяце', 'Почилить'),
@@ -22,7 +22,7 @@ let appData = {
 
     appData.expenses[answer1] = answer2;
     appData.expenses[answer3] = answer4;
-alert("ёжик" > "яблоко");
+
 alert(appData.budget / 30);
 
 /*
