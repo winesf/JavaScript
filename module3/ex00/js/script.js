@@ -1,37 +1,37 @@
 window.addEventListener('DOMContentLoaded', function (){
-   'use strict';
-   let tab = document.querySelectorAll('.info-header-tab'),
-       info = document.querySelector('.info-header'),
-       tabContent = document.querySelectorAll('.info-tabcontent');
+    'use strict';
+    let tab = document.querySelectorAll('.info-header-tab'),
+        info = document.querySelector('.info-header'),
+        tabContent = document.querySelectorAll('.info-tabcontent');
 
-   function hideTabContent(a){
-       for (let i = a; i < tabContent.length; i++){
-           tabContent[i].classList.remove('show');
-           tabContent[i].classList.add('hide');
-       }
-   }
-   hideTabContent(1);
+    function hideTabContent(a){
+        for (let i = a; i < tabContent.length; i++){
+            tabContent[i].classList.remove('show');
+            tabContent[i].classList.add('hide');
+        }
+    }
+    hideTabContent(1);
 
-   function showTabContent(b) {
-       if (tabContent[b].classList.contains('hide')){
-           tabContent[b].classList.remove('hide');
-           tabContent[b].classList.add('show');
-       }
-   }
+    function showTabContent(b) {
+        if (tabContent[b].classList.contains('hide')){
+            tabContent[b].classList.remove('hide');
+            tabContent[b].classList.add('show');
+        }
+    }
 
-   info.addEventListener('click',function (event){
-       let target = event.target;
+    info.addEventListener('click',function (event){
+        let target = event.target;
 
-       if (target && target.classList.contains('info-header-tab')){
-           for(let i = 0; i < tab.length; i++){
-               if (target == tab[i]){
-                   hideTabContent(0);
-                   showTabContent(i);
-                   break;
-               }
-           }
-       }
-   });
+        if (target && target.classList.contains('info-header-tab')){
+            for(let i = 0; i < tab.length; i++){
+                if (target == tab[i]){
+                    hideTabContent(0);
+                    showTabContent(i);
+                    break;
+                }
+            }
+        }
+    });
     // Зачем применять делегирование событий? чтобы не назначать событие на каждый дочерний элемент родителя.
 
 // Таймер
@@ -44,12 +44,12 @@ window.addEventListener('DOMContentLoaded', function (){
             minutes = Math.floor((t/1000/60)%60),
             hours = Math.floor((t/(1000*60*60)));
 
-            return {
-               'total' : t,
-               'hours' : hours,
-               'minutes' : minutes,
-               'seconds' : seconds
-            };
+        return {
+            'total' : t,
+            'hours' : hours,
+            'minutes' : minutes,
+            'seconds' : seconds
+        };
     }
 
     function setClock(id, endtime){
@@ -64,9 +64,9 @@ window.addEventListener('DOMContentLoaded', function (){
             let t = getTimeRemaining(endtime);
 
             function addZero(num){
-              if (num <= 9) {
-                  return '0' + num;
-              }  else return num;
+                if (num <= 9) {
+                    return '0' + num;
+                }  else return num;
             };
             hours.textContent = addZero(t.hours);
             minutes.textContent = addZero(t.minutes);
@@ -83,5 +83,50 @@ window.addEventListener('DOMContentLoaded', function (){
 
     setClock('timer', deadline);
 
+    // Modal
 
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    function showModal(btn){
+        overlay.style.display = 'block';
+        btn.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    }
+    more.addEventListener('click', function (){
+        showModal(more);
+    });
+
+    close.addEventListener('click' , function (){
+        let moreSplash = document.querySelector('.more-splash');
+        overlay.style.display = 'none';
+        moreSplash.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
+
+    let btnDescription = document.querySelector('.info');
+    btnDescription.addEventListener('click',function(event){
+        if (event.target.className == 'description-btn') {
+            console.log(event.target);
+            showModal(event.target);
+        }
+    });
 });
+// Второе задание :
+// <input id="age" value="30">
+//     let age = document.getElementById('age');
+//     function showUser(surname, name) {
+//     alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+//     showUser();
+//  showUser.apply(age, ["Hello","World"]);
+
+// Третье задание :
+// 'use strict'
+// function hello() {
+//     console.log(this)
+// }
+// hello()
+
+// Данный код выведет Undefined из за Строгого режима , иначе вывела бы Window
