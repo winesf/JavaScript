@@ -108,7 +108,6 @@ window.addEventListener('DOMContentLoaded', function (){
     let btnDescription = document.querySelector('.info');
     btnDescription.addEventListener('click',function(event){
         if (event.target.className == 'description-btn') {
-            console.log(event.target);
             showModal(event.target);
         }
     });
