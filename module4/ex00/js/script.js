@@ -159,7 +159,7 @@ window.addEventListener('DOMContentLoaded', function (){
     }
     let forms = document.querySelectorAll('form');
         forms.forEach(function (form){
-            value.addEventListener('submit', function (event){
+            form.addEventListener('submit', function (event){
                 event.preventDefault();  //Сбрасываем стандартный обработчик события
                 sendRequest(form); //отправляем запрос
                 clearInput(form); // чистим input
