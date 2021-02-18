@@ -1,36 +1,36 @@
-window.addEventListener('DOMContentLoaded', function (){
-   'use strict';
-   let tab = document.querySelectorAll('.info-header-tab'),
-       info = document.querySelector('.info-header'),
-       tabContent = document.querySelectorAll('.info-tabcontent');
+let inputRub = document.getElementById('rub'),
+    inputUsd = document.getElementById('usd');
 
-   function hideTabContent(a){
-       for (let i = a; i < tabContent.length; i++){
-           tabContent[i].classList.remove('show');
-           tabContent[i].classList.add('hide');
-       }
-   }
-   hideTabContent(1);
+inputRub.addEventListener('input', () => {
+    console.log('HELLO');
+    function catchData() {
 
-   function showTabContent(b) {
-       if (tabContent[b].classList.contains('hide')){
-           tabContent[b].classList.remove('hide');
-           tabContent[b].classList.add('show');
-       }
-   }
+        return new Promise(function (resolve, reject) {
 
-   info.addEventListener('click',function (event){
-       let target = event.target;
+            let request = new XMLHttpRequest();
+            request.open('GET', 'js/current.json');
+            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            request.send();
 
-       if (target && target.classList.contains('info-header-tab')){
-           for(let i = 0; i < tab.length; i++){
-               if (target == tab[i]){
-                   hideTabContent(0);
-                   showTabContent(i);
-                   break;
-               }
-           }
-       }
-   });
+            request.onload = function () {
+                if (request.readyState === 4) {
+                    if (request.status == 200) {
+                        resolve(this.response)
+                    } else {
+                        reject();
+                    }
+                }
+            }
+
+        });
+    };
+
+    catchData()
+        .then(response => {
+            console.log(response);
+            let data = JSON.parse(response);
+            inputUsd.value = inputRub.value / data.usd;
+        })
+        .then(() => console.log(5000))
+        .catch(() => inputUsd.value = "Error")
 });
-// Зачем применять делегирование событий? чтобы не назначать событие на каждый дочерний элемент родителя.

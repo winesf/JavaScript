@@ -6,12 +6,57 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Javascript</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<ul>
-    <li><a href="module2/">module2</a></li>
-    <li><a href="module3/">module3</a></li>
-    <li><a href="module4/">module4</a></li>
+
+<!-- Overlay -->
+<div class="main-header">
+    <!-- Overlay inner wrapper -->
+    <div class="main-header__inner">
+        <!-- Title -->
+        <h1 class="main-header__title">
+            Проект по курсу "Полный курс по Javascript + React"
+        </h1>
+        <!-- Description -->
+        <p class="main-header__description">
+              <h2>Краткое описание изученного материала:</h2>
+        <ol>
+           <li>Основы программирования и алгоритмов.</li>
+            <li>Основы объектно ориентированного программирования.</li>
+            <li>Концепции и принципы JavaScript, от самых простых до самых сложных.</li>
+            <li>Работа с такими популярными технологиями как AJAX, JSON и тд.</li>
+            <li>Git и GitHub.</li>
+            <li>npm, Babel, Browserify, Webpack.</li>
+            <li>Библиотека React и создание 4 приложения на её основе.</li>
+        </ol>
+        </p>
+        <!-- Buttons -->
+        <div class="overlay__btns">
+
+            <button class="main-header__btn">
+                <a href="https://github.com" target="_blank">
+
+                   Вторая часть курса
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
+
+<ul class="list">
+    <li class="card">
+        <h3>Модуль 1</h3>
+        <p> Финальный проект "Калькулятор расчета бюджета"</p>
+        <a href="module1/ex06/index.html">Клик</a></li>
+    <li class="card">
+        <h3>Модуль 2</h3>
+        <p>Теоритический модуль</p>
+        <a href="module2/">Клик</a></li>
+    <li class="card">
+        <h3>Модуль 3</h3>
+        <p>Финальный проект "Landingpage Travel.org"</p>
+        <a href="module3/ex03/index.html">Клик</a></li>
 </ul>
 </body>
 </html>
