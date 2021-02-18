@@ -1,0 +1,11 @@
+version: "2.4"
+
+services:
+  webhost:
+    image: nginx:stable
+    container_name: webhost
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/usr/share/nginx/html
